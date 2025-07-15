@@ -3,38 +3,6 @@ import './App.css'
 import Desktop from './components/Desktop'
 import type { WindowState } from './types'
 
-interface MenuBarProps {
-  currentTime: Date
-}
-
-const MenuBar = ({ currentTime }: MenuBarProps) => {
-  const [time, setTime] = useState(currentTime)
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const formatTime = (date: Date) =>
-    date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-  return (
-    <div className="menu-bar">
-      <div className="menu-left">
-        <span className="apple-logo" role="img" aria-label="Apple">🍎</span>
-        <span className="menu-item">File</span>
-        <span className="menu-item">Edit</span>
-        <span className="menu-item">View</span>
-        <span className="menu-item">Special</span>
-      </div>
-      <div className="menu-right">
-        {/* Add system icons here if you want */}
-        <span className="time">{formatTime(time)}</span>
-      </div>
-    </div>
-  )
-}
-
 function App() {
   const [windows, setWindows] = useState<WindowState[]>([])
 
