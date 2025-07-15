@@ -1,0 +1,48 @@
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  font-family: 'ChicagoFLF', 'Chicago', 'VT323', 'Press Start 2P', monospace;
+}
+
+.desktop-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.dropdown-link {
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.dropdown-link:hover {
+  background: #222;
+  color: #fff;
+}
+
+.dropdown-link.clicked {
+  animation: dropdownClick 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdownClick {
+  0% {
+    transform: scale(1);
+    background: #222;
+    color: #fff;
+  }
+  50% {
+    transform: scale(0.95);
+    background: #444;
+    color: #fff;
+  }
+  100% {
+    transform: scale(1);
+    background: #222;
+    color: #fff;
+  }
+}
