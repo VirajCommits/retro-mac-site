@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Desktop from './components/Desktop'
 import type { WindowState } from './types'
