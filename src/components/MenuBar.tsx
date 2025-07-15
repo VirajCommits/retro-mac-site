@@ -63,7 +63,7 @@ const MenuBar = ({ currentTime, onOpenWindow }: MenuBarProps) => {
             src="/apple_logo.png"
             alt="Apple"
             className="apple-logo"
-            style={{ width: 18, height: 18, marginRight: 4, verticalAlign: 'middle', cursor: 'pointer' }}
+            style={{ width: 18, height: 18, marginRight: 4, verticalAlign: 'middle', cursor: 'pointer', display: 'inline-block' }}
             onClick={() => setAppleOpen((open) => !open)}
           />
           {appleOpen && (

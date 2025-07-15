@@ -55,11 +55,15 @@ body {
 }
 
 .apple-logo {
-  font-size: 18px;
-  margin-right: 4px;
-  font-family: inherit;
-  color: #111;
-  line-height: 1;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px;
+  min-height: 28px;
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
 }
 
 .apple-menu {
@@ -248,4 +252,102 @@ body {
   background: #111;
   color: #fff;
   border: 1px solid #111;
+}
+
+@media (max-width: 600px) {
+  .apple-logo {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px;
+    min-height: 28px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .menu-bar {
+    flex-direction: column;
+    height: auto;
+    padding: 0 16px;
+    font-size: 15px;
+    overflow-x: visible;
+    min-width: 0;
+    align-items: flex-start;
+  }
+  .menu-left, .menu-right {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 15px;
+    overflow-x: visible;
+    min-width: 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .menu-item, .apple-logo {
+    font-size: 15px;
+    padding: 0 8px;
+  }
+  .time {
+    display: none;
+  }
+  .desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 48px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+  }
+  .desktop-icon {
+    margin-bottom: 24px;
+    margin-right: 0 !important;
+    position: static !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .desktop-icon + .desktop-icon {
+    margin-top: 0;
+  }
+  .window {
+    min-width: 96vw !important;
+    min-height: 60vh !important;
+    max-width: 98vw;
+    max-height: 90vh;
+    left: 2vw !important;
+    top: 56px !important;
+    font-size: 14px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .window-content {
+    font-size: 14px;
+    padding: 8px 4px;
+  }
+  /* Hide scrollbars */
+  .desktop, .window {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .desktop::-webkit-scrollbar, .window::-webkit-scrollbar {
+    display: none;
+  }
+  .desktop-icon {
+    width: 56px;
+    margin-bottom: 10px;
+  }
+  .desktop-icon img {
+    width: 36px;
+    height: 36px;
+  }
+  .desktop-icon-label {
+    font-size: 11px;
+    max-width: 56px;
+  }
+  .menu-bar .links-dropdown, .apple-dropdown {
+    min-width: 100px;
+    font-size: 13px;
+  }
 }

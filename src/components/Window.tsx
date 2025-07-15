@@ -161,11 +161,12 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
         let resumeSrc = '';
         if (resumeType === 'mle') resumeSrc = '/VirajMurabMLE.pdf';
         if (resumeType === 'fullstack') resumeSrc = '/VirajMurabL.pdf';
+        const isMobile = typeof globalThis !== 'undefined' && globalThis.window && globalThis.window.innerWidth <= 600;
         return (
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 24, minHeight: 0 }}>
-            <h2 style={{ fontFamily: 'inherit', fontSize: 22, margin: 0 }}>Résumé</h2>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: isMobile ? 0 : 24, minHeight: 0 }}>
+            <h2 style={{ fontFamily: 'inherit', fontSize: 22, margin: 0, padding: isMobile ? '12px' : 0 }}>Résumé</h2>
             {resumeType === 'none' && (
-              <div style={{ margin: '16px 0' }}>
+              <div style={{ margin: isMobile ? '12px 0' : '16px 0' }}>
                 <span>Which resume would you like to view?</span>
                 <div style={{ marginTop: 12, display: 'flex', gap: 12 }}>
                   <button onClick={() => setResumeType('mle')}>MLE Resume</button>
@@ -194,7 +195,45 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
                 >
                   ← Back
                 </button>
-                <iframe src={resumeSrc} title="Resume PDF" width="100%" height="100%" style={{ filter: 'grayscale(1)', border: 'none', flex: 1, minHeight: 0 }} />
+                <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                  {isMobile ? (
+                    <>
+                      <div style={{ textAlign: 'center', fontSize: 16, margin: '32px 0' }}>
+                        PDF viewing is not supported on mobile browsers.<br />
+                        <a href={resumeSrc} target="_blank" rel="noopener noreferrer" style={{
+                          display: 'inline-block',
+                          marginTop: 16,
+                          padding: '10px 24px',
+                          background: '#111',
+                          color: '#fff',
+                          borderRadius: 6,
+                          fontWeight: 'bold',
+                          textDecoration: 'none',
+                          fontSize: 16,
+                          boxShadow: '2px 2px 0 #111',
+                        }}>
+                          Open Resume in New Tab
+                        </a>
+                      </div>
+                    </>
+                  ) : (
+                    <iframe
+                      src={resumeSrc}
+                      title="Resume PDF"
+                      width="100%"
+                      height="100%"
+                      style={{
+                        filter: 'grayscale(1)',
+                        border: 'none',
+                        flex: 1,
+                        minHeight: 0,
+                        margin: 0,
+                        padding: 0,
+                        display: 'block',
+                      }}
+                    />
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -353,8 +392,8 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
                   ← Back
                 </button>
                 <div style={{
-                  maxWidth: 600,
-                  margin: '0 auto',
+                  maxWidth: isMobile ? '80vw' : 600,
+                  margin: isMobile ? '0 auto' : '0 auto',
                   background: '#fff',
                   border: '2px solid #111',
                   boxShadow: '2px 2px 0 #111',
@@ -469,21 +508,26 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
     }
   }
 
+  const isMobile = typeof globalThis !== 'undefined' && globalThis.window && globalThis.window.innerWidth <= 600;
+
   return (
     <div
       ref={windowRef}
       className="window"
       style={{
-        left: window.position.x,
-        top: window.position.y,
-        width: window.size.width,
-        height: window.size.height,
+        left: isMobile ? '3vw' : window.position.x,
+        top: isMobile ? 48 : window.position.y, // 48px header
+        width: isMobile ? '94vw' : window.size.width,
+        height: isMobile ? 'calc(100vh - 48px)' : window.size.height,
+        maxWidth: isMobile ? '94vw' : undefined,
+        maxHeight: isMobile ? 'calc(100vh - 48px)' : undefined,
         zIndex: window.zIndex || 1,
         cursor: isDragging ? 'grabbing' : 'default',
         display: 'flex',
         flexDirection: 'column',
         minWidth: MIN_WIDTH,
         minHeight: MIN_HEIGHT,
+        position: isMobile ? 'fixed' : 'absolute',
       }}
       onMouseDown={handleMouseDown}
       tabIndex={0}
@@ -556,12 +600,14 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
       <div className="window-content" style={{ flex: 1, minHeight: 0, overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
         {renderContent()}
       </div>
-      <div
-        className="window-resize-handle"
-        onMouseDown={handleResizeMouseDown}
-        style={{ position: 'absolute', right: 0, bottom: 0, width: 18, height: 18, cursor: 'nwse-resize', zIndex: 10 }}
-        aria-label="Resize window"
-      />
+      {!isMobile && (
+        <div
+          className="window-resize-handle"
+          onMouseDown={handleResizeMouseDown}
+          style={{ position: 'absolute', right: 0, bottom: 0, width: 18, height: 18, cursor: 'nwse-resize', zIndex: 10 }}
+          aria-label="Resize window"
+        />
+      )}
     </div>
   )
 }

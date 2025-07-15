@@ -7,11 +7,18 @@ function App() {
   const [windows, setWindows] = useState<WindowState[]>([])
 
   const openWindow = (type: string, title: string) => {
-    const w = 700;
-    const h = 450;
-    const x = Math.max(0, Math.round((window.innerWidth - w) / 2));
-    // Offset y to avoid desktop icons (e.g., y >= 100)
-    const y = Math.max(100, Math.round((window.innerHeight - h) / 2));
+    const HEADER_HEIGHT_MOBILE = 48; // px, adjust if your header is taller
+    const isMobile = window.innerWidth <= 600;
+    let w = 700;
+    let h = 450;
+    let x = Math.max(0, Math.round((window.innerWidth - w) / 2));
+    let y = Math.max(100, Math.round((window.innerHeight - h) / 2));
+    if (isMobile) {
+      w = window.innerWidth;
+      h = window.innerHeight - HEADER_HEIGHT_MOBILE;
+      x = 0;
+      y = HEADER_HEIGHT_MOBILE;
+    }
     const position = { x, y };
     const size = { width: w, height: h };
     const newWindow: WindowState = {

@@ -46,3 +46,47 @@
     color: #fff;
   }
 }
+
+@media (max-width: 600px) {
+  .desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 48px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+  }
+  .desktop-icon {
+    margin-bottom: 24px;
+    margin-right: 0 !important;
+    position: static !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .desktop-icon + .desktop-icon {
+    margin-top: 0;
+  }
+  /* Hide scrollbars */
+  .desktop {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .desktop::-webkit-scrollbar {
+    display: none;
+  }
+  .desktop-icon img {
+    width: 36px;
+    height: 36px;
+  }
+  .desktop-icon-label {
+    font-size: 11px;
+    max-width: 56px;
+  }
+  .dropdown-link {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}

@@ -30,6 +30,8 @@ const DesktopIcon = ({ name, icon, onDoubleClick, position, onPositionChange }: 
     window.removeEventListener('mouseup', handleMouseUp)
   }
 
+  const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
   return (
     <div
       className="desktop-icon"
@@ -45,7 +47,8 @@ const DesktopIcon = ({ name, icon, onDoubleClick, position, onPositionChange }: 
         zIndex: dragging ? 1000 : undefined,
         width: 80
       }}
-      onDoubleClick={onDoubleClick}
+      onDoubleClick={!isTouchDevice ? onDoubleClick : undefined}
+      onClick={isTouchDevice ? onDoubleClick : undefined}
       onMouseDown={handleMouseDown}
     >
       <img src={icon} alt={name} style={{ width: 48, height: 48, marginBottom: 4, imageRendering: 'pixelated' }} />
