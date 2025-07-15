@@ -39,33 +39,6 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
 
 const HEADER_HEIGHT_MOBILE = 48; // px, adjust if your header is taller
 
-const openWindow = (type: string, title: string) => {
-  const isMobile = window.innerWidth <= 600;
-  let w = 700;
-  let h = 450;
-  let x = Math.max(0, Math.round((window.innerWidth - w) / 2));
-  let y = Math.max(100, Math.round((window.innerHeight - h) / 2));
-  if (isMobile) {
-    w = window.innerWidth;
-    h = window.innerHeight - HEADER_HEIGHT_MOBILE;
-    x = 0;
-    y = HEADER_HEIGHT_MOBILE;
-  }
-  const position = { x, y };
-  const size = { width: w, height: h };
-  const newWindow: WindowState = {
-    id: Date.now(),
-    type,
-    title,
-    isOpen: true,
-    isMinimized: false,
-    position,
-    size,
-    zIndex: Math.max(...windows.map(w => w.zIndex || 0), 0) + 1
-  };
-  setWindows([...windows, newWindow]);
-}
-
 const isMobile = window.innerWidth <= 600;
 
 const Desktop = ({ windows, onOpenWindow, onCloseWindow, onUpdateWindow, onBringToFront }: DesktopProps) => {
