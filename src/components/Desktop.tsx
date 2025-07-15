@@ -28,7 +28,7 @@ const initialIcons: IconData[] = [
   { name: 'Fun Bits', icon: '/funbits.png', type: 'fun', position: { x: 552, y: 64 } },
 ]
 
-// Add a helper to chunk icons for mobile
+// Helper to chunk icons for mobile
 function chunkArray<T>(arr: T[], size: number): T[][] {
   const res: T[][] = [];
   for (let i = 0; i < arr.length; i += size) {
@@ -36,8 +36,6 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
   }
   return res;
 }
-
-const HEADER_HEIGHT_MOBILE = 48; // px, adjust if your header is taller
 
 const isMobile = window.innerWidth <= 600;
 
