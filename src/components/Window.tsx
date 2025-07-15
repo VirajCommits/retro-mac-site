@@ -125,7 +125,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
                 <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
                 <p>I thrive at the intersection of software engineering, machine learning, and creative product development.</p>
               </div>
-              <img src="/src/assets/potrait.png" alt="urab portrait" width={188} height={256} style={{ filter: 'grayscale(1)', border: '2px solid #111', alignSelf: 'flex-start' }} />
+              <img src="./potrait.png" alt="urab portrait" width={188} height={256} style={{ filter: 'grayscale(1)', border: '2px solid #111', alignSelf: 'flex-start' }} />
             </div>
           </div>
         )
