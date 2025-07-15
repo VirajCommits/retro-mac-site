@@ -110,6 +110,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
     };
   }, [isResizing, resizeStart, onUpdate]);
 
+  const isMobile = typeof globalThis !== 'undefined' && globalThis.window && globalThis.window.innerWidth <= 600;
   // --- CONTENT RENDER ---
   const renderContent = () => {
     switch (window.type) {
@@ -117,15 +118,49 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
         return (
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 24, minHeight: 0 }}>
             <h1 style={{ fontFamily: 'inherit', fontSize: 28, margin: 0 }}>About Me</h1>
-            <div style={{ display: 'flex', gap: 24, marginTop: 16, flex: 1, minHeight: 0 }}>
-              <div style={{ flex: 1, fontSize: 16, lineHeight: 1.6 }}>
-                <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2024.</p>
-                <p>I worked as a Machine Learning Assistant under Professor Rupam Mahmoud at the University of Alberta, where I published research on Real-Time Reinforcement Learning (RTRL). My work includes building eLSTM and RTU models, applying Actor-Critic methods to POMDPs, and developing scalable RL systems.</p>
-                <p>Previously, I interned at Questrade in Toronto as a Full Stack Developer, building insurance microservices. I have a strong foundation in systems programming, having built low-level C projects like a UNIX shell, file system, and MapReduce engine.</p>
-                <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
-                <p>I thrive at the intersection of software engineering, machine learning, and creative product development.</p>
-              </div>
-              <img src="./potrait.png" alt="urab portrait" width={188} height={256} style={{ filter: 'grayscale(1)', border: '2px solid #111', alignSelf: 'flex-start' }} />
+            <div style={{
+              display: 'flex',
+              gap: 24,
+              marginTop: 16,
+              flex: 1,
+              minHeight: 0,
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: isMobile ? 'center' : 'flex-start',
+            }}>
+              {!isMobile && (
+                <div style={{ flex: 1, fontSize: 16, lineHeight: 1.6 }}>
+                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2024.</p>
+                  <p>I worked as a Machine Learning Assistant under Professor Rupam Mahmoud at the University of Alberta, where I published research on Real-Time Reinforcement Learning (RTRL). My work includes building eLSTM and RTU models, applying Actor-Critic methods to POMDPs, and developing scalable RL systems.</p>
+                  <p>Previously, I interned at Questrade in Toronto as a Full Stack Developer, building insurance microservices. I have a strong foundation in systems programming, having built low-level C projects like a UNIX shell, file system, and MapReduce engine.</p>
+                  <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
+                  <p>I thrive at the intersection of software engineering, machine learning, and creative product development.</p>
+                </div>
+              )}
+              <img
+                src="/potrait.png"
+                alt="urab portrait"
+                width={isMobile ? 120 : 188}
+                height={isMobile ? 160 : 256}
+                style={{
+                  filter: 'grayscale(1)',
+                  border: '2px solid #111',
+                  alignSelf: isMobile ? 'center' : 'flex-start',
+                  marginBottom: isMobile ? 16 : 0,
+                  borderRadius: 8,
+                  maxWidth: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                }}
+              />
+              {isMobile && (
+                <div style={{ flex: 1, fontSize: 16, lineHeight: 1.6 }}>
+                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2024.</p>
+                  <p>I worked as a Machine Learning Assistant under Professor Rupam Mahmoud at the University of Alberta, where I published research on Real-Time Reinforcement Learning (RTRL). My work includes building eLSTM and RTU models, applying Actor-Critic methods to POMDPs, and developing scalable RL systems.</p>
+                  <p>Previously, I interned at Questrade in Toronto as a Full Stack Developer, building insurance microservices. I have a strong foundation in systems programming, having built low-level C projects like a UNIX shell, file system, and MapReduce engine.</p>
+                  <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
+                  <p>I thrive at the intersection of software engineering, machine learning, and creative product development.</p>
+                </div>
+              )}
             </div>
           </div>
         )
@@ -133,7 +168,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
         return (
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 24, minHeight: 0 }}>
             <h2 style={{ fontFamily: 'inherit', fontSize: 22, margin: 0 }}>Experience</h2>
-            <ul style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6 }}>
+            <ul style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6, paddingLeft: 12, marginLeft: 0 }}>
               <li><b>Incoming Full Stack Developer, Air Canada (Toronto)</b><br/>
                 Starting July 2024
               </li>
@@ -161,7 +196,6 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
         let resumeSrc = '';
         if (resumeType === 'mle') resumeSrc = '/VirajMurabMLE.pdf';
         if (resumeType === 'fullstack') resumeSrc = '/VirajMurabL.pdf';
-        const isMobile = typeof globalThis !== 'undefined' && globalThis.window && globalThis.window.innerWidth <= 600;
         return (
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: isMobile ? 0 : 24, minHeight: 0 }}>
             <h2 style={{ fontFamily: 'inherit', fontSize: 22, margin: 0, padding: isMobile ? '12px' : 0 }}>Résumé</h2>
@@ -507,8 +541,6 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
         return <div style={{ flex: 1 }}>Unknown window type</div>
     }
   }
-
-  const isMobile = typeof globalThis !== 'undefined' && globalThis.window && globalThis.window.innerWidth <= 600;
 
   return (
     <div
