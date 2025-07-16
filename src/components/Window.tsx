@@ -129,7 +129,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
             }}>
               {!isMobile && (
                 <div style={{ flex: 1, fontSize: 16, lineHeight: 1.6 }}>
-                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2024.</p>
+                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2025.</p>
                   <p>I worked as a Machine Learning Assistant under Professor Rupam Mahmoud at the University of Alberta, where I published research on Real-Time Reinforcement Learning (RTRL). My work includes building eLSTM and RTU models, applying Actor-Critic methods to POMDPs, and developing scalable RL systems.</p>
                   <p>Previously, I interned at Questrade in Toronto as a Full Stack Developer, building insurance microservices. I have a strong foundation in systems programming, having built low-level C projects like a UNIX shell, file system, and MapReduce engine.</p>
                   <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
@@ -154,7 +154,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
               />
               {isMobile && (
                 <div style={{ flex: 1, fontSize: 16, lineHeight: 1.6 }}>
-                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2024.</p>
+                  <p>I'm a passionate developer and machine learning enthusiast. I will be joining Air Canada as a Full Stack Developer in Toronto starting July 2025.</p>
                   <p>I worked as a Machine Learning Assistant under Professor Rupam Mahmoud at the University of Alberta, where I published research on Real-Time Reinforcement Learning (RTRL). My work includes building eLSTM and RTU models, applying Actor-Critic methods to POMDPs, and developing scalable RL systems.</p>
                   <p>Previously, I interned at Questrade in Toronto as a Full Stack Developer, building insurance microservices. I have a strong foundation in systems programming, having built low-level C projects like a UNIX shell, file system, and MapReduce engine.</p>
                   <p>I love solving challenging problems—I've tackled 730+ LeetCode questions (contest rating: 1600, <a href="https://leetcode.com/u/VariableViking/" target="_blank" rel="noopener noreferrer">profile</a>)—and enjoy building products that make an impact. My social app PalCrush (Next.js/React/TS) reached 300+ users on launch day and was a Top 50 Product Hunt project (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7294261590017593345/" target="_blank" rel="noopener noreferrer">live demo</a>). As a Product Owner, I led a team of six to deliver a distributed social platform.</p>
@@ -170,7 +170,7 @@ const Window = ({ window, onClose, onUpdate, onBringToFront }: WindowProps) => {
             <h2 style={{ fontFamily: 'inherit', fontSize: 22, margin: 0 }}>Experience</h2>
             <ul style={{ marginTop: 16, fontSize: 16, lineHeight: 1.6, paddingLeft: 12, marginLeft: 0 }}>
               <li><b>Incoming Full Stack Developer, Air Canada (Toronto)</b><br/>
-                Starting July 2024
+                Starting July 2025
               </li>
               <li><b>Machine Learning Assistant, University of Alberta (with Prof. Rupam Mahmoud)</b><br/>
                 Published research on Real-Time Reinforcement Learning (RTRL). Built eLSTM and RTU models, applied Actor-Critic methods to POMDPs, and developed scalable RL systems for real-time and batch learning.
